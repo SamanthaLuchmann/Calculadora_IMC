@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculo-I.M.C</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body> 
+	<h1 id="título">Cálculo de IMC</h1>
+	<h3 id="parágrafo">Coloque apenas seu peso e altura faremos o cálculo do seu Índice de Massa Corporal</h3>
+	
+	<div> <label>Seu peso</label> </div>
+	<div> <input type="number" class="peso" name="peso" placeholder="00,0kg"/> </div>
+	<div> <label>Sua altura</label> </div>
+    <div> <input type="number" class="altura" name="altura" placeholder="0,00m"/> </div>
+	<div> <input type="button" class="btn" value="Calcular"> </div>
+    <span class="resultado"></span>
+
+</body>
+<script>
+	    btn = document.querySelector(".btn");
+    	btn.addEventListener("click", ()=>{
+        peso = parseFloat(document.querySelector(".peso").value);
+        altura = parseFloat(document.querySelector(".altura").value);
+        resultado = peso / (altura * altura);
+	
+        if(resultado < 18.5)
+            resultado += "<br/> Você está com Baixo do Peso";
+        if(resultado > 18.5 && resultado < 25)
+            resultado += "<br/> Você está no Peso Ideal";
+        if(resultado > 25 && resultado < 30)
+            resultado += "<br/> Você está com Sobrepeso";
+        if(resultado > 30 && resultado < 35)
+            resultado += "<br/> Você está com Obesidade grau 1";
+        if(resultado > 35 && resultado < 40)
+            resultado += "<br/> Você está com Obesidade grau 2";
+        if(resultado > 40)
+			resultado += "<br/> Você está com Obesidade grau 3";
+		resultado = "Seu IMC é " + resultado;
+        document.querySelector(".resultado").innerHTML = resultado;
+	});
+</script>
+</html>
